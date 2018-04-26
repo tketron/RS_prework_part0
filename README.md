@@ -262,3 +262,156 @@
 
 	`grep -iwn "z.*" instructors.txt`
 
+
+### Git
+
+#### Git Basics Exercises
+
+1. Create a folder called learn_git_again.
+	`mkdir learn_git_again`
+1. cd into the learn_git_again folder.
+	`cd learn_git_again`
+1. Create a file called third.txt.
+	`touch third.txt`
+1. Initialize an empty git repository.
+	`git init`
+1. Add third.txt to the staging area.
+	`git add third.txt`
+1. Commit with the message "adding third.txt".
+	`git commit -m "adding third.txt`
+1. Check out your commit with git log.
+	`git log`
+1. Create another file called fourth.txt.
+	`touch fourth.txt`
+1. Add fourth.txt to the staging area.
+	`git add fourth.txt`
+1. Commit with the message "adding fourth.txt"
+	`git commit -m "adding fourth.txt`
+1. Remove the third.txt file
+	`rm third.txt`
+1. Add this change to the staging area
+	`git add -A`
+1. Commit with the message "removing third.txt"
+	`git commit -m "removing third.txt`"
+1. Check out your commits using git log
+	`git log`
+1. Change your global setting to core.pager=cat - you can read more about that here.
+	`git config --global --replace-all core.page cat`
+1. Write the command to list all of the global configurations for git on your machine. You can type git config --global to find out how to do this
+	`git config --global -l`
+	
+#### Branching and Merging Exercises
+
+##### Part I
+
+1. What does git clean do?
+
+	Removes untracked files from the working directory (i.e., removes files that are not under version control)
+	
+1. What do the -d and -f flags for git clean do?
+2. 
+	`-d` removes untracked folders in addition to files
+	`-f` instructs the command to use force.  Without this flag git-clean will not delete files or directories unless the clean.requireForce config variable is set to false.
+	
+1. What git command creates a branch?
+
+	`git checkout -b NAME_OF_BRANCH`
+	
+1. What is the difference between a fast-forward and recursive merge?
+
+	A fast forward merge can occur when commits happened chronologically.  A recursive merge occurs when git cannot easily determine the order of commits on different branches.
+	
+1. What git command changes to another branch?
+	
+	`git checkout NAME_OF_BRANCH`
+	
+1. How do you remove modified or deleted files from the working directory?
+	
+	`git checkout NAME_OF_FILE`, if the file is being tracked by version control.
+	
+1. What git command deletes a branch?
+	
+	`git branch -D NAME_OF_BRANCH`
+	
+1. What does the git diff command do?
+	
+	`git diff` allows you to see changes between commits, branches, and the working tree.
+	
+1. How do you remove files from the staging area?
+
+	`git rm --cached NAME_OF_FILE`
+	
+1. How do merge conflicts happen?
+	
+	The same file has been modified on two different branches and is no longer the same between branches.
+	
+##### Part II
+
+	
+	mkdir merge_conflict && cd merge_conflict
+	git init
+	touch first.txt
+	echo hello > first.txt	
+	git add .
+	git commit -m "initial commit"
+	
+	git checkout -b feature
+	echo world > second.txt
+	git add .
+	git commit -m "second commit"
+	
+	git checkout master
+	git goodbye > second.txt
+	git add .
+	git commit -m "third commit"
+	
+	git merge feature
+	
+	
+
+#### GitHub Exercises
+
+##### Part I
+
+1. Create a local repository and add and commit some files
+
+	```
+	mkdir github_test
+	cd github_test
+	git init
+	touch example1.txt
+	touch example2.txt
+	echo foo bar > example1.txt
+	echo hello world > example2.txt
+	git add .
+	git commit -m "initial commit"
+	```
+
+
+1. Create a remote repository and push your code from the local repo to the remote
+
+	```
+	git remote add origin git@github.com:tketron/test_repo.git
+	git pull origin master
+	git push origin master
+	```
+
+
+1. Fork the repo https://github.com/rithmschool/git_practice - clone it and submit a pull request
+
+
+
+
+1. Create a new branch locally and push it to GitHub
+
+	```
+	git checkout -b feature
+	git push origin feature
+	```
+
+
+1. Submit a pull request with your new branch against the master branch on the git_practice repo.
+
+	`git pull origin master`
+
+
